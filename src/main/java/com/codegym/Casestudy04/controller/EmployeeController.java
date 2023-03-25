@@ -52,7 +52,7 @@ public class EmployeeController {
     public ResponseEntity<EmployeeReponseDto> updateEmployeeById(@PathVariable("id") Long id, @RequestBody EmployeeRequestDto employeeRequestDto){
         return ResponseEntity.ok().body(employeeService.updateEmployee(id,employeeRequestDto));
     }
-}
+
 
    
     @PostMapping("/checkin/{id}")

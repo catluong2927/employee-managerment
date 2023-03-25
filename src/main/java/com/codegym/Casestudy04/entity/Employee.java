@@ -60,5 +60,5 @@ public class Employee {
     private Role role;
 
     @Column(name = "status", nullable = false)
-    private boolean isStatus;
+    private Boolean isStatus;
 }
