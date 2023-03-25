@@ -47,7 +47,14 @@ public class EmployeeController {
         }
     }
 
-    //phần của bình
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<EmployeeReponseDto> updateEmployeeById(@PathVariable("id") Long id, @RequestBody EmployeeRequestDto employeeRequestDto){
+        return ResponseEntity.ok().body(employeeService.updateEmployee(id,employeeRequestDto));
+    }
+}
+
+   
     @PostMapping("/checkin/{id}")
     public ResponseEntity<?> checkin(@PathVariable("id")  Long id) {
         employeeService.checkin(id);
@@ -63,6 +70,6 @@ public class EmployeeController {
         }
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
-//-----
+
     }
 

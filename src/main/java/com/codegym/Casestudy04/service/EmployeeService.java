@@ -7,18 +7,34 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    //phần của bình
+    
     void checkin(Long id);
 
     EmployeeReponseDto getEmployeeByUsername(String username);
-//----
+
     List<EmployeeReponseDto> getEmployees();
+
+    List<EmployeeReponseDto> getEmployeesByStatus();
+
     List<EmployeeReponseDto> getEmployeesByFullName(String fullName);
 
+
+    EmployeeReponseDto getEmployeeByUsername(String username);
+
+
     void remove(Long id);
+
     EmployeeReponseDto getEmployeeById(Long userId);
+
+
+    EmployeeReponseDto updateEmployee(Long id, EmployeeRequestDto employeeRequestDto);
+
+    EmployeeReponseDto getEmployeeByName(String name);
+
+    EmployeeReponseDto save(EmployeeRequestDto employeeDto);
 
 
 
     EmployeeReponseDto save(EmployeeRequestDto EmployeeDto);
+
 }
