@@ -21,7 +21,8 @@ public class EmployeeReponseDto {
     private Department department;
 
     private String job;
+    private Long checkIn;
 
-    private boolean isStatus;
+    private Boolean isStatus;
 
 }

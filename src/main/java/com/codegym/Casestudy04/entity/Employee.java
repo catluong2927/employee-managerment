@@ -50,7 +50,7 @@ public class Employee {
     private String job;
 
     @Column(name = "salary")
-    private double salary;
+    private Double salary;
 
     @Column(name = "check_in")
     private Long checkIn;
