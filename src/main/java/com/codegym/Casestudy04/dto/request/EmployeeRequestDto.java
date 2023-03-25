@@ -1,6 +1,7 @@
 package com.codegym.Casestudy04.dto.request;
 
 import com.codegym.Casestudy04.entity.Department;
+import com.codegym.Casestudy04.entity.Role;
 import lombok.Data;
 import java.util.Date;
 
@@ -33,7 +34,7 @@ public class EmployeeRequestDto {
 
     private Long checkIn;
 
-    private Long roleId;
+    private Role role;
 
     private boolean isStatus;
 }

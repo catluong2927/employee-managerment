@@ -1,5 +1,6 @@
 package com.codegym.Casestudy04.controller;
 
+import com.codegym.Casestudy04.dto.request.EmployeeRequestDto;
 import com.codegym.Casestudy04.dto.response.EmployeeReponseDto;
 import com.codegym.Casestudy04.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,19 @@ public class EmployeeController {
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/create")
+    public ResponseEntity<EmployeeReponseDto> addNewEmployee(@RequestBody EmployeeRequestDto employeeRequestDto){
+       return new ResponseEntity<EmployeeReponseDto>(employeeService.save(employeeRequestDto),HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> removeEmployee(@PathVariable("id") Long id) {
         EmployeeReponseDto employee = employeeService.getEmployeeById(id);
         if (employee == null) {
-            return new ResponseEntity<EmployeeReponseDto>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             employeeService.remove(id);
-            return new ResponseEntity<>(employee, HttpStatus.OK);
+            return new ResponseEntity<EmployeeReponseDto>(employee, HttpStatus.OK);
         }
     }
 }

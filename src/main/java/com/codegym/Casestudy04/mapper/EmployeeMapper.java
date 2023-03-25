@@ -19,9 +19,9 @@ public class EmployeeMapper {
 
     public List<EmployeeReponseDto> EntitiesTransToDtos(Iterable<Employee> employeeList ){
         List<EmployeeReponseDto> employeeDtoList = new ArrayList<>();
-        EmployeeReponseDto employeeDto = new EmployeeReponseDto();
 
         employeeList.forEach(employee -> {
+            EmployeeReponseDto employeeDto = new EmployeeReponseDto();
             BeanUtils.copyProperties(employee,employeeDto);
             employeeDtoList.add(employeeDto);
         });

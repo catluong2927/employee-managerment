@@ -11,5 +11,5 @@ public interface EmployeeService {
     void remove(Long id);
     EmployeeReponseDto getEmployeeById(Long userId);
 
-    void save(EmployeeRequestDto EmployeeDto);
+    EmployeeReponseDto save(EmployeeRequestDto EmployeeDto);
 }

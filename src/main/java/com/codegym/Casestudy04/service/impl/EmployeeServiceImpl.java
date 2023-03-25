@@ -23,7 +23,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeReponseDto> getEmployees() {
-        List<Employee> employees = employeeRepo.findAll();
         return employeeMapper.EntitiesTransToDtos(employeeRepo.findAll());
     }
 
@@ -47,10 +46,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return null;
     }
 
-
     @Override
-    public void save(EmployeeRequestDto employeeDto) {
+    public EmployeeReponseDto save(EmployeeRequestDto employeeDto) {
         Employee employee = employeeMapper.DtoTransToEntity(employeeDto);
         employeeRepo.save(employee);
+        EmployeeReponseDto employeeReponseDto = employeeMapper.EntityTransToDto(employee);
+        return employeeReponseDto;
     }
 }

@@ -3,13 +3,14 @@ package com.codegym.Casestudy04.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.Year;
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Table(name = "employees")
 public class Employee {
     @Id
@@ -43,8 +44,6 @@ public class Employee {
 
     @ManyToOne(targetEntity = Department.class)
     @JoinColumn(name = "department_id", referencedColumnName = "id")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Department department;
 
     @Column(name = "job")
@@ -56,9 +55,10 @@ public class Employee {
     @Column(name = "check_in")
     private Long checkIn;
 
-    @Column(name = "role_id", nullable = false)
-    private Long roleId;
+    @ManyToOne(targetEntity = Role.class)
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    private Role role;
 
-    @Column(name = "isStatus", nullable = false)
+    @Column(name = "status", nullable = false)
     private boolean isStatus;
 }
