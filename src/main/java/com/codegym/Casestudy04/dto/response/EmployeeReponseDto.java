@@ -1,6 +1,7 @@
 package com.codegym.Casestudy04.dto.response;
 
 import com.codegym.Casestudy04.entity.Department;
+import com.codegym.Casestudy04.entity.Role;
 import lombok.Data;
 
 import java.util.Date;
@@ -22,4 +23,5 @@ public class EmployeeReponseDto {
     private String job;
 
     private boolean isStatus;
+
 }
