@@ -17,12 +17,12 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping()
-    public List<EmployeeReponseDto> getAllEmployees(){
+    public List<EmployeeReponseDto> getAllEmployees() {
         return employeeService.getEmployees();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeReponseDto> getEmployee(@PathVariable("id") Long id){
+    public ResponseEntity<EmployeeReponseDto> getEmployee(@PathVariable("id") Long id) {
         EmployeeReponseDto employee = employeeService.getEmployeeById(id);
 
         if (employee == null) {
@@ -32,8 +32,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<EmployeeReponseDto> addNewEmployee(@RequestBody EmployeeRequestDto employeeRequestDto){
-       return new ResponseEntity<EmployeeReponseDto>(employeeService.save(employeeRequestDto),HttpStatus.CREATED);
+    public ResponseEntity<EmployeeReponseDto> addNewEmployee(@RequestBody EmployeeRequestDto employeeRequestDto) {
+        return new ResponseEntity<EmployeeReponseDto>(employeeService.save(employeeRequestDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -47,8 +47,29 @@ public class EmployeeController {
         }
     }
 
+
     @PutMapping("/update/{id}")
     public ResponseEntity<EmployeeReponseDto> updateEmployeeById(@PathVariable("id") Long id, @RequestBody EmployeeRequestDto employeeRequestDto){
         return ResponseEntity.ok().body(employeeService.updateEmployee(id,employeeRequestDto));
     }
 }
+
+   
+    @PostMapping("/checkin/{id}")
+    public ResponseEntity<?> checkin(@PathVariable("id")  Long id) {
+        employeeService.checkin(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("findUserName/{username}")
+    public ResponseEntity<EmployeeReponseDto> getEmployee(@PathVariable("username") String username) {
+        EmployeeReponseDto employee = employeeService.getEmployeeByUsername(username);
+
+        if (employee == null) {
+            return new ResponseEntity<EmployeeReponseDto>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+
+    }
+

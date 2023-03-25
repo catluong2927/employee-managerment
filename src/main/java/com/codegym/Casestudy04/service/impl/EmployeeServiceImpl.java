@@ -16,7 +16,10 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Service @RequiredArgsConstructor @Transactional @Slf4j
+@Service
+@RequiredArgsConstructor
+@Transactional
+@Slf4j
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepo;
@@ -27,6 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmployeeReponseDto> getEmployees() {
         return employeeMapper.EntitiesTransToDtos(employeeRepo.findAll());
     }
+
 
     @Override
     public List<EmployeeReponseDto> getEmployeesByStatus() {
@@ -61,11 +65,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         return null;
     }
 
+    // phần của bình
     @Override
     public EmployeeReponseDto getEmployeeByUsername(String username) {
-        return null;
+        return employeeMapper.EntityTransToDto(employeeRepo.findByUsername(username));
     }
 
+    @Override
+    public void checkin(Long userId) {
+        employeeRepo.checkIn(userId);
+    }
+
+    //------
     @Override
     public EmployeeReponseDto save(EmployeeRequestDto employeeDto) {
         Employee employee = employeeMapper.DtoTransToEntity(employeeDto);
