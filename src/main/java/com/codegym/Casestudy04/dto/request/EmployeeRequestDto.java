@@ -36,5 +36,5 @@ public class EmployeeRequestDto {
 
     private Role role;
 
-    private boolean isStatus;
+    private Boolean isStatus;
 }

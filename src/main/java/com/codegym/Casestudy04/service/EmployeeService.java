@@ -10,7 +10,6 @@ public interface EmployeeService {
     
     void checkin(Long id);
 
-    EmployeeReponseDto getEmployeeByUsername(String username);
 
     List<EmployeeReponseDto> getEmployees();
 
@@ -33,8 +32,5 @@ public interface EmployeeService {
 
     EmployeeReponseDto save(EmployeeRequestDto employeeDto);
 
-
-
-    EmployeeReponseDto save(EmployeeRequestDto EmployeeDto);
 
 }
